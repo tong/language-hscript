@@ -1,6 +1,6 @@
 {
   "name": "language-hscript",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "HScript language support in Atom",
   "keywords": [
     "haxe",
