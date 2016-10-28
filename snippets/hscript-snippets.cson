@@ -1,0 +1,64 @@
+'.source.hscript':
+	'var':
+		'prefix': 'var'
+		'body': 'var'
+	'true':
+        'prefix': 'true'
+        'body': 'true'
+    'false':
+        'prefix': 'false'
+        'body': 'false'
+    'null':
+        'prefix': 'null'
+        'body': 'null'
+    'if':
+        'prefix': 'if'
+        'body': 'if( ${1:condition} ) {\n\t$0\n}'
+	'else':
+		'prefix': 'else '
+		'body': 'else {\n\t$0\n}'
+	'else..if':
+		'prefix': 'elseif'
+		'body': 'else if( ${1:condition} ) {\n\t$0\n}'
+	'if..else':
+		'prefix': 'ifelse'
+		'body': 'if( ${1:condition} ) \{\n\t${2:expr}\n\} else \{\n\t${3:expr}\n\}'
+	'switch..case':
+		'prefix': 'switch '
+		'body': 'switch $1 \{\ncase ${2:expr}:\n\t$0\n}\n'
+	'case':
+		'prefix': 'case '
+		'body': 'case ${1:expr}:\n\t${2:statement}\n'
+	'default':
+		'prefix': 'default:'
+		'body': 'default:\n\t${1:statement}'
+	'return':
+		'prefix': 'return'
+		'body': 'return$0'
+	'while':
+		'prefix': 'while'
+		'body': 'while( ${1:true} ) {\n\t$2\n}$0'
+	'do..while':
+		'prefix': 'do '
+		'body': 'do {\n\t$1\n} while( ${2:true} );$0'
+	'continue':
+		'prefix': 'continue'
+		'body': 'continue;$0'
+	'break':
+		'prefix': 'break'
+		'body': 'break;'
+	'for i in 0...end':
+		'prefix': 'fori'
+		'body': 'for( ${1:var} in ${2:0}...${3:end} ) {\n\t${4:expr}\n}$0'
+	'for a in b':
+		'prefix': 'for'
+		'body': 'for( ${1:value} in ${2:iterable} ) {\n\t$3\n}\n$0'
+	'try':
+		'prefix': 'try'
+		'body': 'try {\n\t$1\n} catch(${2:e:Dynamic}) {\n\t${3:trace(e);}\n}$0'
+	'catch':
+		'prefix': 'catch'
+		'body': 'catch(${1:e:Dynamic}) {\n\t${2:trace(e);}\n}\n$0'
+	'throw':
+		'prefix': 'throw'
+		'body': 'throw ${1:expr};$0'

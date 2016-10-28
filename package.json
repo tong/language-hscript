@@ -1,0 +1,21 @@
+{
+  "name": "language-hscript",
+  "version": "0.0.0",
+  "description": "HScript language support in Atom",
+  "keywords": [
+    "haxe",
+    "hscript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tong/language-hscript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tong/language-hscript/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.11.0 <2.0.0"
+  },
+  "dependencies": {}
+}

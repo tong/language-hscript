@@ -1,0 +1,285 @@
+'scopeName': 'source.hscript'
+'name': 'HScript'
+'comment': 'HScript Syntax'
+'fileTypes': ['hscript']
+'patterns': [
+	{
+		'include': '#comments'
+	}
+	{
+		'include': '#strings'
+	}
+	{
+		'include': '#constants'
+	}
+	{
+		'include': '#keywords'
+	}
+	{
+		'include': '#regex'
+	}
+	{
+		'include': '#field-completions'
+	}
+	{
+      	'match': '(\\$type|\\b(case|catch|default|do|else|for|if|in|switch|throw|try|while|return|break|continue|var)\\b)'
+      	'name': 'keyword.control.hscript'
+    }
+	{
+	    'match': '\\b(null|true|false)\\b'
+	    'name': 'constant.language.hscript'
+	}
+	{
+      	'match': '\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f)?\\b'
+      	'name': 'constant.numeric.hscript'
+    }
+  	{
+    	'begin': '"'
+    	'beginCaptures':
+      		'0':
+        	'name': 'punctuation.definition.string.begin.hscript'
+    	'end': '"'
+    	'endCaptures':
+      		'0':
+        	'name': 'punctuation.definition.string.end.hscript'
+    	'name': 'string.quoted.double.hscript'
+    	'patterns': [
+      		{
+        		'match': '\\\\.'
+        		'name': 'constant.character.escape.hscript'
+      		}
+    	]
+  	}
+	{
+	    'begin': '/\\*'
+	    'captures':
+	      	'0':
+	        	'name': 'punctuation.definition.comment.hscript'
+	    'end': '\\*/'
+	    'name': 'comment.block.hscript'
+	}
+	{
+	    'captures':
+	      	'1':
+	        	'name': 'punctuation.definition.comment.hscript'
+	    'match': '(//).*$\\n?'
+	    'name': 'comment.line.double-slash.hscript'
+	}
+  	{
+    	'begin': '\''
+    	'beginCaptures':
+      		'0':
+        	'name': 'punctuation.definition.string.begin.hscript'
+    	'end': '"'
+    	'endCaptures':
+      		'0':
+        	'name': 'punctuation.definition.string.end.hscript'
+    	'name': 'string.quoted.single.hscript'
+    	'patterns': [
+      		{
+        		'match': '\\\\.'
+        		'name': 'constant.character.escape.hscript'
+      		}
+    	]
+  	}
+	{
+      	'match': '[-!%&*+=/?:]'
+      	'name': 'keyword.operator.symbolic.hscript'
+    }
+	{
+	    'match': '\\b(function)\\b'
+	    'name': 'keyword.function.hscript'
+	}
+]
+'repository':
+	'comments':
+		'patterns': [
+			{
+				'captures':
+					'0':
+						'name': 'punctuation.definition.comment.hscript'
+				'match': '/\\*\\*/'
+				'name': 'comment.block.empty.hscript'
+			}
+			{
+				'include': 'text.html.javadoc'
+			}
+			{
+				'include': '#comments-inline'
+			}
+		]
+	'comments-inline':
+		'patterns': [
+			{
+				'begin': '/\\*'
+				'captures':
+					'0':
+						'name': 'punctuation.definition.comment.hscript'
+				'end': '\\*/'
+				'name': 'comment.block.hscript'
+			}
+			{
+				'captures':
+					'1':
+						'name': 'comment.line.double-slash.hscript'
+					'2':
+						'name': 'punctuation.definition.comment.hscript'
+				'match': '\\s*((//).*$\\n?)'
+			}
+		]
+	'constants':
+		'patterns': [
+			{
+				'match': '\\b(true|false|null)\\b'
+				'name': 'constant.language.hscript'
+			}
+			{
+				'match': '\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b'
+				'name': 'constant.numeric.hscript'
+			}
+		]
+	'field-completions':
+		'patterns': [
+			{
+				'begin': '\\.|(?<!if|while|return|for)\\s*\\(\\b'
+				'end': '\\s|\\n|;'
+				'name': 'meta.scope.field-completions.hscript'
+				'patterns': [
+					{
+						'include': '#constants'
+					}
+					{
+						'include': '#strings'
+					}
+					{
+						'include': '#keywords'
+					}
+				]
+			}
+		]
+	'keywords':
+		'patterns': [
+			{
+				'match': '\\b(try|catch|throw)\\b'
+				'name': 'keyword.control.catch-exception.hscript'
+			}
+			{
+				'match': '\\w+\\s*\\?\\s*\\w+\\s*:'
+				'name': 'keyword.control.ternary-if.hscript'
+			}
+			{
+				'captures':
+					'1':
+						'name': 'keyword.control.hscript.flow-control.2'
+				'match': '\\b(if|return|while|for)\\b\\s*\\('
+			}
+			{
+				'match': '\\b(return|break|case|continue|default|do|while|for|switch|if|else)\\b'
+				'name': 'keyword.control.hscript.flow-control.2'
+			}
+			{
+				'match': '(==|!=|<=|>=|<>|<|>)'
+				'name': 'keyword.operator.comparison.hscript'
+			}
+			{
+				'match': '(=)'
+				'name': 'keyword.operator.assignment.hscript'
+			}
+			{
+				'match': '(\\.\\.\\.)'
+				'name': 'keyword.control.directive.hscript'
+			}
+			{
+				'match': '(\\-\\-|\\+\\+)'
+				'name': 'keyword.operator.increment-decrement.hscript'
+			}
+			{
+				'match': '(\\-|\\+|\\*|\\/|%)'
+				'name': 'keyword.operator.arithmetic.hscript'
+			}
+			{
+				'match': '(!|&&|\\|\\|)'
+				'name': 'keyword.operator.logical.hscript'
+			}
+			{
+				'match': '\\b(cast|untyped)\\b'
+				'name': 'keyword.other.untyped.hscript'
+			}
+			{
+				'match': '\\btrace\\b'
+				'name': 'keyword.other.trace.hscript'
+			}
+			{
+				'captures':
+					'1':
+						'name': 'keyword.control.directive.conditional.hscript'
+				'match': '(#if\\s+([\\!\\w]+|(\\([^\\)]*\\))))'
+			}
+			{
+				'match': ';'
+				'name': 'punctuation.terminator.hscript'
+			}
+			{
+				'match': '\\b(var|new)\\b'
+				'name': 'keyword.other.variable.hscript'
+			}
+			{
+				'match': '\\b__(init|instanceof|string_rec)\\b'
+				'name': 'support.variable.magic.hscript'
+			}
+			{
+				'match': '\\bprototype\\b'
+				'name': 'support.variable.magic.hscript'
+			}
+			{
+				'match': '\\b__(init|name|ename|super|unprotect|constructs|class|enum)__\\b'
+				'name': 'support.variable.magic.hscript'
+			}
+			{
+				'include': '#storage'
+			}
+		]
+	'regex':
+		'patterns': [
+	      	{
+	        	'captures': {}
+	        	'match': '~/([^/]+)/'
+	      	}
+	    ]
+	'strings':
+      	'patterns': [
+        	{
+          		'begin': '"'
+          		'beginCaptures':
+            		'0':
+              			'name': 'punctuation.definition.string.begin.hscript'
+          		'end': '"'
+          		'endCaptures':
+            		'0':
+              			'name': 'punctuation.definition.string.end.hscript'
+          		'name': 'string.quoted.double.hscript'
+          		'patterns': [
+            		{
+              			'match': '\\\\.'
+              			'name': 'constant.character.escape.hscript'
+            		}
+          		]
+        	}
+        	{
+          		'begin': '\''
+          		'beginCaptures':
+            		'0':
+              			'name': 'punctuation.definition.string.begin.hscript'
+          		'end': '\''
+          		'endCaptures':
+            		'0':
+              			'name': 'punctuation.definition.string.end.hscript'
+          		'name': 'string.quoted.single.hscript'
+          		'patterns': [
+            		{
+              			'match': '\\\\.'
+              			'name': 'constant.character.escape.hscript'
+            		}
+          		]
+        	}
+      	]
